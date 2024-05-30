@@ -2,10 +2,16 @@ import express from "express";
 import { PORT } from "./config.js";
 import mongoose from "mongoose";
 import bookRoutes from './routes/bookRoutes.js'
+import cors from 'cors';
 
 const app = express();
 
 app.use(express.json());
+app.use(cors({
+    origin: '*',
+    methods:['GET', 'POST', 'PUT','DELETED'],
+    allowedHeaders: ['Content-Type']
+}))
 
 mongoose
     .connect("mongodb+srv://root:root@cluster0.ijmxjab.mongodb.net/books-collection?retryWrites=true&w=majority&appName=Cluster0")
