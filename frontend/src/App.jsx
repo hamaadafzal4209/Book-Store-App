@@ -1,20 +1,21 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./Pages/Home";
-import CreateBook from "./Pages/CreateBook";
-import ShowBooks from "./Pages/ShowBooks";
-import EditBook from "./Pages/EditBook";
-import DeleteBook from "./Pages/DeleteBook";
+import BookList from "./components/BookList";
+import BookForm from "./components/BookForm";
+import Navbar from "./components/Navbar";
 
-function App() {
+const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/book/create" element={<CreateBook />} />
-      <Route path="/books/details/:id" element={<ShowBooks />} />
-      <Route path="/book/edit/:id" element={<EditBook />} />
-      <Route path="/book/delete/:id" element={<DeleteBook />} />
-    </Routes>
+    <div>
+      <Navbar />
+      <div className="container mx-auto p-6">
+        <Routes>
+          <Route path="/" element={<BookList />} />
+          <Route path="/add" element={<BookForm />} />
+          <Route path="/edit/:id" element={<BookForm />} />
+        </Routes>
+      </div>
+    </div>
   );
-}
+};
 
 export default App;
